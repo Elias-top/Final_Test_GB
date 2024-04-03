@@ -32,6 +32,10 @@ public class Service {
        return animalsList.getListDoingsAnimalInfo(id);
     }
 
+    public List<String> getListTypesAnimals(){
+        return animalsList.getListTypesAnimals();
+     }
+
     public void addDoingOfAnimal(int index, String doing){
         animalsList.addDoingOfAnimal(index, doing);
     }

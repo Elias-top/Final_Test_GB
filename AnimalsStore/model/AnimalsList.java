@@ -4,16 +4,58 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.typesAnimals.Camel;
+import model.typesAnimals.Cat;
+import model.typesAnimals.Dog;
+import model.typesAnimals.Donkey;
+import model.typesAnimals.Hamster;
+import model.typesAnimals.Horse;
+
 public class AnimalsList implements Serializable, AnimalsIntefrace{
     private List<Animal> animalsList;
+    private List<TypesAnimals> animalsTypesList;
+
     private int id;
     public AnimalsList(){
         animalsList = new ArrayList<>();
+        animalsTypesList = new ArrayList<>();
+        animalsTypesList.add(new Hamster());
+        animalsTypesList.add(new Cat());
+        animalsTypesList.add(new Dog());
+        animalsTypesList.add(new Camel());
+        animalsTypesList.add(new Donkey());
+        animalsTypesList.add(new Horse());
     }
 
-    public void addNewAnimal(String type, LocalDate birthDay, String name){  
+    public List<String> getListTypesAnimals(){
+        return GetStringTypesAnimals();
+    }
+
+    public TypesAnimals getTypeByStringName(String type_str){
+        for (TypesAnimals type_descr : animalsTypesList)
+        {
+            if(type_str == type_descr.getDescription())
+            {
+                return type_descr;
+            }
+        }
+        return null;
+    }
+
+    private List<String> GetStringTypesAnimals(){
+        List<String> stringTypes = new ArrayList<>();
+        for (int i = 0; i < animalsTypesList.size(); i++)
+        {
+            stringTypes.add(animalsTypesList.get(i).getDescription());
+        }
+
+        return stringTypes;
+    }
+
+    public void addNewAnimal(String type_string, LocalDate birthDay, String name){  
         id += 1; 
-        animalsList.add(new Animal(id, type, birthDay, name));
+        TypesAnimals typeAnimal = getTypeByStringName(type_string);
+        animalsList.add(new Animal(id, typeAnimal, birthDay, name));
     }
 
     public void getListAnimalsInfo(){
@@ -38,14 +80,4 @@ public class AnimalsList implements Serializable, AnimalsIntefrace{
             }
         }
     }
-
-    // public void removeItemFromList(int index){
-    //     Animal need_to_delete = null;
-    //     for(Animal itemToy : toysList){
-    //         if(itemToy.getId() == index){
-    //             need_to_delete = itemToy;
-    //         }
-    //     }
-    //     toysList.remove(need_to_delete);
-    // }
 }

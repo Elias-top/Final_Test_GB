@@ -10,5 +10,7 @@ public interface AnimalsIntefrace {
 
     List<String> getListDoingsAnimalInfo(int id);
     void addDoingOfAnimal(int index, String doing);
+
+    List<String> getListTypesAnimals();
 //    void removeAnimalFromList(int index);
 }

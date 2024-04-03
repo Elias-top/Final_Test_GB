@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Animal implements Serializable{
     private int id;
-    private String type;
+    private TypesAnimals type;
     private LocalDate birthDay;
     private String name;
     private List<String> doingsList;
 
-    public Animal(int id, String type, LocalDate birthDay, String name) {
+    public Animal(int id, TypesAnimals type, LocalDate birthDay, String name) {
         this.id = id;
         this.type = type;
         this.birthDay = birthDay;
@@ -28,7 +28,7 @@ public class Animal implements Serializable{
         return birthDay;
     }
     
-    public String getType() {
+    public TypesAnimals getType() {
         return type;
     }
 
@@ -44,7 +44,7 @@ public class Animal implements Serializable{
         return doingsList;
     }
 
-    public void setType(String type) {
+    public void setType(TypesAnimals type) {
         this.type = type;
     }
 

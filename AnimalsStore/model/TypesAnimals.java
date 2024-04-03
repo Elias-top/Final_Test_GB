@@ -1,25 +1,22 @@
 package model;
 
-public enum TypesAnimals {
-    Cat("Cat"), 
-    Dog("Dog"), 
-    Hamster("Hamster"), 
-    Donkey("Donkey"), 
-    Cammel("Cammel"), 
-    Horse("Horse");
+import java.io.Serializable;
 
-    private String title;
+public abstract class TypesAnimals implements Serializable{
+    private String description;
+    private String commonType;
 
-    TypesAnimals(String title) {
-        this.title = title;
+    public TypesAnimals(String description, String commonType) {
+        this.description = description;
+        this.commonType = commonType;
     }
     
-    public String getTitle(){
-        return title;
+    public String getDescription(){
+        return description;
     }
 
     @Override
     public String toString(){
-        return title;
+        return description + " ( " + commonType + " )";
     }
 }

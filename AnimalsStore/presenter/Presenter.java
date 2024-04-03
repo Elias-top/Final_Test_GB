@@ -25,6 +25,9 @@ public class Presenter {
         return service.getListDoingsAnimalInfo(index);
     }
 
+    public List<String> getListTypesAnimals(){
+        return service.getListTypesAnimals(); 
+    }
     public void addDoingOfAnimal(int index, String doing){
         service.addDoingOfAnimal(index, doing);
     }

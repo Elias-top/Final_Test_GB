@@ -1,11 +1,9 @@
 package view;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-import model.TypesAnimals;
 import presenter.Presenter;
 
 public class ConsoleUI implements View{
@@ -44,15 +42,15 @@ public class ConsoleUI implements View{
     }
 
     public void addAnimalToList(){
-        ArrayList<String> listTypes = new ArrayList<>();
         int temp_index = 1;
         LocalDate birthDay = null;
 
         try{
-            System.out.println("Выберите семейство животного: ");
-            for(TypesAnimals ta: TypesAnimals.values()){
-                System.out.println(temp_index + ". " + ta);
-                listTypes.add(ta.toString());
+            List<String> listTypes = presenter.getListTypesAnimals();
+
+            System.out.println("Выберите тип животного: \n");
+            for(String printTypes : listTypes){
+                System.out.println(temp_index + " "+printTypes);
                 temp_index ++;
             }
             int choice_type = Integer.parseInt(scanner.nextLine());
